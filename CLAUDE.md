@@ -6,7 +6,7 @@ This is an Obsidian theme that adapts the VHS Era color scheme (originally from 
 
 ## Color Palette Reference
 
-### VHS Era Core Colors
+### VHS Era Dark Mode Colors
 
 **Base Colors:**
 - Background: `#161616`
@@ -29,6 +29,34 @@ This is an Obsidian theme that adapts the VHS Era color scheme (originally from 
 - Green: `#42be65`
 - Yellow: `#ffcc66`
 - White: `#ffffff`
+
+### VHS Era Light Mode Colors
+
+**Base Colors:**
+- Background Primary: `#e8e5d8` (darker warm cream - better text contrast)
+- Background Secondary: `#e0ddd0` (darker cream)
+- Background Tertiary: `#d8d5c8` (warm depth)
+- Foreground: `#1a1a1a` (nearly black)
+- Muted Text: `#5a5a5a` (medium gray)
+- Selection: `#d0cdc0` (warm gray)
+- Search: `#c8c5b8` (warm highlight)
+
+**Accent Colors (darkened for light backgrounds):**
+- Primary Blue: `#4a7fd6`
+- Property Blue: `#1a8fd6`
+- Light Blue: `#4a9fd6`
+- Cyan: `#1a9d9b`
+- Attribute Cyan: `#067a78`
+- Pink: `#d63582`
+- Parameter Pink: `#c72a70`
+- Purple: `#8b65d6`
+- Green: `#2a9650`
+- Yellow: `#b88a00` (amber/gold)
+
+**Design Philosophy:**
+- Warm, cream-toned backgrounds for retro aesthetic (not stark white)
+- Eye-catching, vibrant accent colors that maintain readability on light backgrounds
+- Same color families as dark mode but adjusted for brightness and contrast
 
 ## Theme Architecture
 
@@ -181,7 +209,9 @@ Submission process:
 
 ## Known Considerations
 
-- Theme is dark mode only (no light variant currently)
+- Theme supports both dark and light modes
+  - Dark mode: High-contrast VHS aesthetic with dark backgrounds
+  - Light mode: Warm, cream-toned backgrounds with retro feel and eye-catching accent colors
 - VHS Era colors optimized for high contrast and retro aesthetic
 - Some third-party plugins may need additional styling
 - Custom checkbox icons use webkit-mask-image (may not work in all browsers)

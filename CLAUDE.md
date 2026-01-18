@@ -34,18 +34,21 @@ This is an Obsidian theme that adapts the VHS Era color scheme (originally from 
 
 ### File Structure
 - `manifest.json` - Theme metadata (name, version, author)
-- `theme.css` - Main stylesheet with color variables and base styling
-- `obsidian.css` - Obsidian-specific UI element styling
+- `theme.css` - Complete stylesheet with all styling (includes merged obsidian.css content)
 - `publish.css` - Styles for Obsidian Publish
-- `snippets/` - Optional CSS snippets for additional customization
 - `README.md` - Installation, usage, and credits
+- `showcase-large.png` - Full-size theme showcase screenshot
+- `cover.png` - 512x288 thumbnail for theme gallery submission
+
+**Note:** The legacy `obsidian.css` file has been merged into `theme.css` to follow modern Obsidian theme conventions.
 
 ### Color Mapping Strategy
 
 **Background System:**
-- Primary background: `#161616` (VHS Era bg)
-- Secondary background: `#131313` (VHS Era float bg)
-- Use grays from `#161616` → `#525252` for base color scale
+- Main content area (markdown editor): `#242424` (color-base-20) - Lighter for better readability
+- Sidebars/UI elements: `#161616` (VHS Era bg) - Darker for visual distinction
+- Float/modal backgrounds: `#131313` (VHS Era float bg)
+- Base color scale: `#131313` → `#161616` → `#242424` → `#353535` → `#525252`
 
 **Foreground/Text:**
 - Primary text: `#f2f4f8` (VHS Era fg)
@@ -64,14 +67,52 @@ This is an Obsidian theme that adapts the VHS Era color scheme (originally from 
 - Links: Primary Blue (`#78a9ff`)
 - Selection: `#353535`
 - Search highlights: `#484848`
+- Active tabs: Cyan text (`#3ddbd9`) with 2px cyan border
+- Sidebar active items: Cyan with border on hover
 - H1: Pink (`#ff7eb6`)
-- H2: Cyan (`#3ddbd9`)
+- H2: Cyan (`#3ddbd9`) with 0.75em bottom margin
 - H3: Purple (`#be95ff`)
 - H4: Light Blue (`#82cfff`)
 - H5: Green (`#42be65`)
 - H6: Yellow (`#ffcc66`)
 - Code blocks: Float background (`#131313`)
+- Inline code: Themed with syntax colors
 - Syntax highlighting: Use VHS Era syntax colors
+
+## Implemented Features
+
+### Custom Task Checkbox Icons
+The theme includes 20+ custom checkbox icons using SVG data URIs and webkit-mask-image:
+- `[!]` - Important (yellow)
+- `[?]` - Question (cyan)
+- `[*]` - Star/priority (yellow)
+- `[n]` - Note (pink)
+- `[l]` - Location (pink)
+- `[i]` - Information (blue)
+- `[S]` - Savings (green)
+- `[I]` - Idea (yellow)
+- `[p]` - Pro (green)
+- `[c]` - Con (pink)
+- `[b]` - Bookmark (pink)
+- `[f]` - Fire/urgent (red)
+- `[w]` - Win (purple)
+- `[k]` - Key point (yellow)
+- `[d]` - Down/declining (pink)
+- And more...
+
+### Styled Callout Boxes
+All Obsidian callouts have themed styling with:
+- Colored left borders (4px)
+- Tinted background colors using rgba with 0.1 alpha
+- Matching title colors
+- Supported types: note, tip, warning, success, danger, info, example, quote, bug, etc.
+
+### Enhanced UI Elements
+- **Tab styling**: Active tabs use cyan text with colored borders
+- **Sidebar**: Larger text (1.15em) with improved spacing and cyan hover states
+- **Search results**: Cyan file titles with yellow highlighted matches
+- **H2 spacing**: 0.75em bottom margin for better content separation
+- **Background contrast**: Main editor area lighter (#242424), sidebars darker (#161616)
 
 ## Development Guidelines
 
@@ -111,15 +152,37 @@ This theme is derived from:
 ## Development Workflow
 
 When making changes:
-1. Modify color variables in `theme.css` first
-2. Test changes in Obsidian (requires reload)
-3. Update `obsidian.css` for specific UI adjustments
-4. Document any color tweaks or adjustments
-5. Update version in `manifest.json` for releases
+1. Modify color variables or styling in `theme.css`
+2. Run `./sync-to-vault.sh` to sync changes to test vault (if available)
+3. Restart Obsidian or switch themes to see changes
+4. Test in different view modes (Reading, Live Preview, Source)
+5. Verify sidebar, tabs, and main content area styling
+6. Update version in `manifest.json` for releases
+7. Update screenshots if visual changes are significant
+8. Commit changes with descriptive messages
+
+## Theme Submission
+
+The theme is ready for submission to the Obsidian Community Themes gallery:
+
+1. Repository: `ianchesal/obsidian-vhs-era`
+2. Required files in place:
+   - `manifest.json` with metadata
+   - `theme.css` with all styling
+   - `cover.png` (512x288) for gallery thumbnail
+   - `README.md` with documentation
+3. Follow modern Obsidian conventions (no legacy `obsidian.css`)
+4. Screenshots showcase all major features
+
+Submission process:
+- Fork `obsidianmd/obsidian-releases`
+- Add entry to `community-css-themes.json`
+- Create pull request
 
 ## Known Considerations
 
-- VHS Era is optimized for code, Obsidian is for prose - some color choices may need adjustment
-- Obsidian has many UI elements not present in terminal editors
-- Plugin compatibility may require additional styling
-- Consider creating a light theme variant in the future
+- Theme is dark mode only (no light variant currently)
+- VHS Era colors optimized for high contrast and retro aesthetic
+- Some third-party plugins may need additional styling
+- Custom checkbox icons use webkit-mask-image (may not work in all browsers)
+- PDF exports use Obsidian's default styling

@@ -196,6 +196,12 @@ A retro, high-contrast dark theme bringing the VHS Era aesthetic to Obsidian.
     --line-height-normal: 1.6;
     --line-width: 45rem;
 
+    /* Font Sizes */
+    --font-smallest: 0.8em;
+    --font-smaller: 0.875em;
+    --font-small: 0.933em;
+    --font-big: 1.15em;
+
     /* ======================================== */
     /* LINKS */
     /* ======================================== */
@@ -852,25 +858,112 @@ mark,
 }
 
 /* ============================================ */
-/* SIDEBAR & NAVIGATION */
+/* SIDEBAR & NAVIGATION (Enhanced LYT Mode styling) */
 /* ============================================ */
 
-.nav-file-title,
-.nav-folder-title {
-    color: var(--nav-item-color);
-    padding: 4px 8px;
-    border-radius: var(--radius-s);
+/* Tree item base styling */
+.tree-item .tree-item-self {
+    padding: var(--size-2-1) var(--size-4-2) var(--size-2-1) calc(4px + var(--size-4-2));
 }
 
-.nav-file-title:hover,
-.nav-folder-title:hover {
-    color: var(--nav-item-color-hover);
-    background-color: var(--nav-item-background-hover);
+.tree-item-self {
+    color: var(--vhs-fg-muted);
+    background: transparent;
+}
+
+.tree-item-self.is-clickable:hover {
+    color: var(--vhs-cyan);
+    background: var(--vhs-selection);
+    border: 1px solid var(--vhs-cyan);
+}
+
+.tree-item-self.is-clickable:hover .tree-item-icon {
+    color: var(--vhs-cyan);
+}
+
+.tree-item-self.is-clickable:active {
+    color: var(--vhs-blue-light);
+    background: var(--vhs-bg-primary);
+    border: 1px solid var(--vhs-blue-light);
+}
+
+.tree-item-self.is-clickable:active .tree-item-icon {
+    color: var(--vhs-blue-light);
+}
+
+/* Make sidebar text bigger and better spaced */
+.tree-item-inner {
+    font-size: var(--font-big);
+    margin: 0;
+    padding: 0 0 0 8px;
+}
+
+.tree-item-icon.collapse-icon {
+    margin: 0 0 0 -10px;
+    padding: 0;
+}
+
+.tree-item-children {
+    margin: 0 0 1px 12px;
+    padding: 0 0 0 2px;
+}
+
+/* File and folder titles */
+.nav-folder-title,
+.nav-file-title {
+    color: var(--vhs-fg-primary);
+    border: 1px solid transparent;
+    border-radius: var(--radius-s);
+    line-height: 1.0;
+    padding: var(--size-2-1) var(--size-4-2);
+}
+
+.nav-folder-title:hover,
+.nav-file-title:hover {
+    color: var(--vhs-cyan) !important;
+    background: var(--vhs-selection) !important;
+    border: 1px solid var(--vhs-cyan) !important;
+}
+
+.nav-folder-title:hover .nav-folder-collapse-indicator {
+    color: var(--vhs-cyan) !important;
+}
+
+.nav-folder-title:active,
+.nav-file-title:active {
+    color: var(--vhs-blue-light) !important;
+    background: var(--vhs-bg-primary) !important;
+    border: 1px solid var(--vhs-blue-light) !important;
+}
+
+.nav-folder-title:active .nav-folder-collapse-indicator {
+    color: var(--vhs-blue-light) !important;
 }
 
 .nav-file-title.is-active {
-    background-color: var(--nav-item-background-active);
-    color: var(--text-accent);
+    color: var(--vhs-cyan);
+    font-weight: 500;
+    background: var(--vhs-selection);
+    border: 1px solid var(--vhs-cyan);
+}
+
+/* Search results styling */
+.search-result-file-title {
+    font-size: var(--font-big);
+    color: var(--vhs-cyan);
+    font-weight: 600;
+}
+
+.search-result-file-match {
+    background-color: var(--vhs-search);
+    border-left: 3px solid var(--vhs-blue);
+    padding: 4px 8px;
+    margin: 2px 0;
+}
+
+.search-result-file-matched-text {
+    color: var(--vhs-yellow);
+    font-weight: 600;
 }
 
 /* ============================================ */

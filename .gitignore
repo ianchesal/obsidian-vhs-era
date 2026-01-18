@@ -1,0 +1,38 @@
+# Editor and IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# OS files
+Thumbs.db
+Desktop.ini
+
+# Node modules (if using any build tools)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Build artifacts
+dist/
+build/
+*.log
+
+# Temporary files
+*.tmp
+.cache/
+
+# Obsidian vault files (don't commit actual vault content)
+.obsidian/
+
+# Development notes
+notes/
+scratch/
+TODO.md
+NOTES.md
+
+# Local sync script (user-specific paths)
+sync-to-vault.sh
+.claude/settings.local.json

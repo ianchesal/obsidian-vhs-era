@@ -1,0 +1,1267 @@
+/*
+VHS Era Theme for Obsidian
+Version: 0.1.0
+Author: Ian Chesal
+License: MIT
+
+Based on:
+- VHS Era Neovim Theme by Mistweaver Co. (https://github.com/mistweaverco/vhs-era-theme.nvim)
+- LYT Mode by Nick Milo (https://github.com/nickmilo/LYT-Mode)
+
+A retro, high-contrast dark theme bringing the VHS Era aesthetic to Obsidian.
+*/
+
+/* Import additional stylesheets */
+@import url('obsidian.css');
+@import url('publish.css');
+
+/* ============================================ */
+/* COLOR VARIABLES - VHS ERA PALETTE */
+/* ============================================ */
+
+.theme-dark {
+    /* VHS Era Base Colors */
+    --vhs-bg-primary: #161616;
+    --vhs-bg-secondary: #131313;
+    --vhs-fg-primary: #f2f4f8;
+    --vhs-fg-muted: #525252;
+    --vhs-white: #ffffff;
+
+    /* VHS Era Selection & UI */
+    --vhs-selection: #353535;
+    --vhs-search: #484848;
+    --vhs-cursor: #ffffff;
+
+    /* VHS Era Accent Colors */
+    --vhs-blue: #78a9ff;
+    --vhs-blue-property: #33b1ff;
+    --vhs-blue-light: #82cfff;
+    --vhs-cyan: #3ddbd9;
+    --vhs-cyan-attr: #08bdba;
+    --vhs-pink: #ff7eb6;
+    --vhs-pink-param: #ee5396;
+    --vhs-purple: #be95ff;
+    --vhs-green: #42be65;
+    --vhs-yellow: #ffcc66;
+
+    /* ======================================== */
+    /* OBSIDIAN CORE VARIABLE MAPPINGS */
+    /* ======================================== */
+
+    /* Backgrounds */
+    --background-primary: var(--vhs-bg-primary);
+    --background-primary-alt: var(--vhs-bg-secondary);
+    --background-secondary: var(--vhs-bg-primary);
+    --background-secondary-alt: var(--vhs-bg-secondary);
+    --background-modifier-border: var(--vhs-fg-muted);
+    --background-modifier-form-field: var(--vhs-bg-secondary);
+    --background-modifier-form-field-highlighted: var(--vhs-selection);
+    --background-modifier-box-shadow: rgba(0, 0, 0, 0.3);
+    --background-modifier-success: var(--vhs-green);
+    --background-modifier-error: var(--vhs-pink);
+    --background-modifier-error-rgb: 255, 126, 182;
+    --background-modifier-error-hover: var(--vhs-pink);
+    --background-modifier-cover: rgba(22, 22, 22, 0.8);
+
+    /* Text Colors */
+    --text-normal: var(--vhs-fg-primary);
+    --text-muted: var(--vhs-fg-muted);
+    --text-faint: var(--vhs-fg-muted);
+    --text-error: var(--vhs-pink);
+    --text-accent: var(--vhs-blue);
+    --text-accent-hover: var(--vhs-blue-light);
+    --text-highlight-bg: var(--vhs-yellow);
+    --text-highlight-bg-active: var(--vhs-yellow);
+    --text-selection: var(--vhs-selection);
+
+    /* Interactive Elements */
+    --interactive-normal: var(--vhs-bg-secondary);
+    --interactive-hover: var(--vhs-selection);
+    --interactive-accent: var(--vhs-blue);
+    --interactive-accent-hover: var(--vhs-blue-light);
+    --interactive-success: var(--vhs-green);
+
+    /* Scrollbars */
+    --scrollbar-bg: var(--vhs-bg-primary);
+    --scrollbar-thumb-bg: var(--vhs-fg-muted);
+    --scrollbar-active-thumb-bg: var(--vhs-blue);
+
+    /* ======================================== */
+    /* BASE COLOR SCALE (for gradients/shades) */
+    /* ======================================== */
+
+    --color-base-00: #131313;
+    --color-base-05: #161616;
+    --color-base-10: #1a1a1a;
+    --color-base-20: #242424;
+    --color-base-25: #2a2a2a;
+    --color-base-30: #353535;
+    --color-base-35: #404040;
+    --color-base-40: #484848;
+    --color-base-50: #525252;
+    --color-base-60: #6f6f6f;
+    --color-base-70: #a0a0a0;
+    --color-base-80: #c8c8c8;
+    --color-base-90: #e0e0e0;
+    --color-base-95: #f2f4f8;
+    --color-base-100: #ffffff;
+
+    /* ======================================== */
+    /* ACCENT COLOR FAMILIES */
+    /* ======================================== */
+
+    /* Cyan Family */
+    --color-cyan-300: var(--vhs-cyan-attr);
+    --color-cyan-500: var(--vhs-cyan);
+    --color-cyan-700: var(--vhs-blue-property);
+    --color-cyan-900: var(--vhs-blue-light);
+
+    /* Blue Family (Primary) */
+    --color-blue-300: var(--vhs-blue-light);
+    --color-blue-500: var(--vhs-blue);
+    --color-blue-700: var(--vhs-blue-property);
+    --color-blue-900: #5a8bd6;
+
+    /* Magenta/Pink Family */
+    --color-magenta-300: var(--vhs-pink);
+    --color-magenta-500: var(--vhs-pink-param);
+    --color-magenta-700: #d1427a;
+    --color-magenta-900: #b8356b;
+
+    /* Purple Family */
+    --color-purple-300: #d4b3ff;
+    --color-purple-500: var(--vhs-purple);
+    --color-purple-700: #a07acc;
+    --color-purple-900: #8661a9;
+
+    /* Green Family */
+    --color-green-300: #6ed896;
+    --color-green-500: var(--vhs-green);
+    --color-green-700: #359951;
+    --color-green-900: #2a7a41;
+
+    /* Yellow Family */
+    --color-yellow-300: #ffdb8f;
+    --color-yellow-500: var(--vhs-yellow);
+    --color-yellow-700: #e6b84d;
+    --color-yellow-900: #cca33d;
+
+    /* ======================================== */
+    /* TYPOGRAPHY */
+    /* ======================================== */
+
+    /* Headings */
+    --h1-color: var(--vhs-pink);
+    --h2-color: var(--vhs-cyan);
+    --h3-color: var(--vhs-purple);
+    --h4-color: var(--vhs-blue-light);
+    --h5-color: var(--vhs-green);
+    --h6-color: var(--vhs-yellow);
+
+    --h1-font: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --h2-font: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --h3-font: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --h4-font: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --h5-font: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --h6-font: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+    --h1-size: 2em;
+    --h2-size: 1.6em;
+    --h3-size: 1.4em;
+    --h4-size: 1.2em;
+    --h5-size: 1.1em;
+    --h6-size: 1em;
+
+    --h1-weight: 700;
+    --h2-weight: 600;
+    --h3-weight: 600;
+    --h4-weight: 600;
+    --h5-weight: 600;
+    --h6-weight: 600;
+
+    --h1-line-height: 1.3;
+    --h2-line-height: 1.3;
+    --h3-line-height: 1.3;
+    --h4-line-height: 1.4;
+    --h5-line-height: 1.4;
+    --h6-line-height: 1.4;
+
+    /* Body Text */
+    --font-text: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-monospace: 'DM Mono', 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', 'Source Code Pro', monospace;
+    --font-interface: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+    --font-text-size: 16px;
+    --font-text-theme: 'DM Sans';
+    --line-height-normal: 1.6;
+    --line-width: 45rem;
+
+    /* ======================================== */
+    /* LINKS */
+    /* ======================================== */
+
+    --link-color: var(--vhs-blue);
+    --link-color-hover: var(--vhs-blue-light);
+    --link-external-color: var(--vhs-cyan);
+    --link-external-color-hover: var(--vhs-cyan-attr);
+    --link-unresolved-color: var(--vhs-pink-param);
+    --link-unresolved-opacity: 0.7;
+
+    /* ======================================== */
+    /* CODE */
+    /* ======================================== */
+
+    --code-background: var(--vhs-bg-secondary);
+    --code-normal: var(--vhs-pink-param);
+    --code-comment: var(--vhs-fg-muted);
+    --code-function: var(--vhs-pink);
+    --code-keyword: var(--vhs-blue);
+    --code-string: var(--vhs-purple);
+    --code-tag: var(--vhs-cyan);
+    --code-important: var(--vhs-yellow);
+
+    /* ======================================== */
+    /* TAGS */
+    /* ======================================== */
+
+    --tag-color: var(--vhs-purple);
+    --tag-color-hover: var(--vhs-cyan);
+    --tag-background: var(--vhs-selection);
+    --tag-background-hover: var(--vhs-search);
+
+    /* ======================================== */
+    /* CHECKBOXES */
+    /* ======================================== */
+
+    --checkbox-color: var(--vhs-fg-muted);
+    --checkbox-color-hover: var(--vhs-blue);
+    --checkbox-border-color: var(--vhs-fg-muted);
+    --checkbox-border-color-hover: var(--vhs-blue);
+    --checkbox-marker-color: var(--vhs-bg-primary);
+    --checkbox-done-color: var(--vhs-green);
+    --checkbox-done-marker-color: var(--vhs-bg-primary);
+
+    /* ======================================== */
+    /* TABLES */
+    /* ======================================== */
+
+    --table-header-background: var(--vhs-bg-secondary);
+    --table-header-color: var(--vhs-cyan);
+    --table-row-even-background: var(--vhs-bg-primary);
+    --table-row-odd-background: var(--vhs-bg-secondary);
+    --table-border-color: var(--vhs-fg-muted);
+
+    /* ======================================== */
+    /* BLOCKQUOTES */
+    /* ======================================== */
+
+    --blockquote-border-color: var(--vhs-blue);
+    --blockquote-background-color: var(--vhs-bg-secondary);
+    --blockquote-color: var(--vhs-fg-primary);
+
+    /* ======================================== */
+    /* CALLOUTS */
+    /* ======================================== */
+
+    --callout-default: var(--vhs-blue);
+    --callout-note: var(--vhs-blue);
+    --callout-abstract: var(--vhs-cyan);
+    --callout-info: var(--vhs-blue-light);
+    --callout-todo: var(--vhs-blue);
+    --callout-tip: var(--vhs-cyan);
+    --callout-success: var(--vhs-green);
+    --callout-question: var(--vhs-yellow);
+    --callout-warning: var(--vhs-yellow);
+    --callout-failure: var(--vhs-pink);
+    --callout-danger: var(--vhs-pink-param);
+    --callout-bug: var(--vhs-pink);
+    --callout-example: var(--vhs-purple);
+    --callout-quote: var(--vhs-fg-muted);
+
+    /* ======================================== */
+    /* GRAPH VIEW */
+    /* ======================================== */
+
+    --graph-node: var(--vhs-blue);
+    --graph-node-unresolved: var(--vhs-pink-param);
+    --graph-node-tag: var(--vhs-purple);
+    --graph-node-attachment: var(--vhs-green);
+    --graph-line: var(--vhs-fg-muted);
+    --graph-line-highlight: var(--vhs-cyan);
+
+    /* ======================================== */
+    /* MISC UI ELEMENTS */
+    /* ======================================== */
+
+    --divider-color: var(--vhs-fg-muted);
+    --border-color: var(--vhs-fg-muted);
+    --hr-color: var(--vhs-fg-muted);
+
+    /* Search */
+    --search-result-background: var(--vhs-search);
+
+    /* Selection */
+    --text-selection-bg: var(--vhs-selection);
+
+    /* Highlights */
+    --highlight-bg: var(--vhs-yellow);
+    --highlight-bg-active: var(--vhs-yellow);
+
+    /* Modals */
+    --modal-background: var(--vhs-bg-primary);
+    --modal-border: var(--vhs-fg-muted);
+
+    /* Buttons */
+    --button-background: var(--vhs-blue);
+    --button-background-hover: var(--vhs-blue-light);
+    --button-text: var(--vhs-white);
+
+    /* Inputs */
+    --input-background: var(--vhs-bg-secondary);
+    --input-border: var(--vhs-fg-muted);
+    --input-border-hover: var(--vhs-blue);
+    --input-border-focus: var(--vhs-cyan);
+
+    /* Tabs */
+    --tab-text-color: var(--vhs-fg-muted);
+    --tab-text-color-active: var(--vhs-fg-primary);
+    --tab-text-color-hover: var(--vhs-blue);
+
+    /* Sidebar */
+    --nav-item-color: var(--vhs-fg-primary);
+    --nav-item-color-hover: var(--vhs-blue);
+    --nav-item-background-hover: var(--vhs-selection);
+    --nav-item-background-active: var(--vhs-search);
+
+    /* ======================================== */
+    /* SIZING & SPACING */
+    /* ======================================== */
+
+    --size-2-1: 2px;
+    --size-2-2: 4px;
+    --size-2-3: 6px;
+    --size-4-1: 4px;
+    --size-4-2: 8px;
+    --size-4-3: 12px;
+    --size-4-4: 16px;
+    --size-4-5: 20px;
+    --size-4-6: 24px;
+    --size-4-8: 32px;
+    --size-4-12: 48px;
+    --size-4-16: 64px;
+
+    --radius-s: 2px;
+    --radius-m: 4px;
+    --radius-l: 8px;
+    --radius-xl: 12px;
+}
+
+/* ============================================ */
+/* GLOBAL STYLES */
+/* ============================================ */
+
+body {
+    --font-text-theme: 'DM Sans';
+    font-family: var(--font-text);
+    font-size: var(--font-text-size);
+    color: var(--text-normal);
+    background-color: var(--background-primary);
+    line-height: var(--line-height-normal);
+}
+
+/* ============================================ */
+/* HEADINGS */
+/* ============================================ */
+
+.markdown-preview-view h1,
+.cm-header-1 {
+    font-family: var(--h1-font);
+    font-size: var(--h1-size);
+    font-weight: var(--h1-weight);
+    line-height: var(--h1-line-height);
+    color: var(--h1-color);
+}
+
+.markdown-preview-view h2,
+.cm-header-2 {
+    font-family: var(--h2-font);
+    font-size: var(--h2-size);
+    font-weight: var(--h2-weight);
+    line-height: var(--h2-line-height);
+    color: var(--h2-color);
+    margin-bottom: 0.75em;
+}
+
+.markdown-preview-view h3,
+.cm-header-3 {
+    font-family: var(--h3-font);
+    font-size: var(--h3-size);
+    font-weight: var(--h3-weight);
+    line-height: var(--h3-line-height);
+    color: var(--h3-color);
+}
+
+.markdown-preview-view h4,
+.cm-header-4 {
+    font-family: var(--h4-font);
+    font-size: var(--h4-size);
+    font-weight: var(--h4-weight);
+    line-height: var(--h4-line-height);
+    color: var(--h4-color);
+}
+
+.markdown-preview-view h5,
+.cm-header-5 {
+    font-family: var(--h5-font);
+    font-size: var(--h5-size);
+    font-weight: var(--h5-weight);
+    line-height: var(--h5-line-height);
+    color: var(--h5-color);
+}
+
+.markdown-preview-view h6,
+.cm-header-6 {
+    font-family: var(--h6-font);
+    font-size: var(--h6-size);
+    font-weight: var(--h6-weight);
+    line-height: var(--h6-line-height);
+    color: var(--h6-color);
+}
+
+/* ============================================ */
+/* LINKS */
+/* ============================================ */
+
+a,
+.cm-link,
+.internal-link,
+.markdown-preview-view .internal-link {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+a:hover,
+.cm-link:hover,
+.internal-link:hover,
+.markdown-preview-view .internal-link:hover {
+    color: var(--link-color-hover);
+    text-decoration: underline;
+}
+
+.external-link {
+    color: var(--link-external-color);
+}
+
+.external-link:hover {
+    color: var(--link-external-color-hover);
+}
+
+.cm-link.is-unresolved,
+.internal-link.is-unresolved {
+    color: var(--link-unresolved-color);
+    opacity: var(--link-unresolved-opacity);
+}
+
+/* ============================================ */
+/* CODE */
+/* ============================================ */
+
+code {
+    background-color: var(--code-background);
+    color: var(--code-normal);
+    font-family: var(--font-monospace);
+    padding: 2px 4px;
+    border-radius: var(--radius-s);
+}
+
+.markdown-preview-view pre,
+.cm-s-obsidian pre.HyperMD-codeblock {
+    background-color: var(--code-background);
+    padding: 12px;
+    border-radius: var(--radius-m);
+}
+
+.markdown-preview-view pre code {
+    background-color: transparent;
+    padding: 0;
+}
+
+/* Syntax Highlighting */
+.cm-comment {
+    color: var(--code-comment);
+}
+
+.cm-keyword {
+    color: var(--code-keyword);
+}
+
+.cm-string {
+    color: var(--code-string);
+}
+
+.cm-tag {
+    color: var(--code-tag);
+}
+
+.cm-def,
+.cm-function {
+    color: var(--code-function);
+}
+
+.cm-variable,
+.cm-variable-2,
+.cm-variable-3 {
+    color: var(--text-normal);
+}
+
+.cm-number {
+    color: var(--vhs-blue-light);
+}
+
+.cm-operator {
+    color: var(--vhs-cyan);
+}
+
+.cm-property {
+    color: var(--vhs-blue-property);
+}
+
+/* ============================================ */
+/* EMPHASIS (Bold, Italic) */
+/* ============================================ */
+
+strong,
+.cm-strong {
+    color: var(--vhs-cyan);
+    font-weight: 700;
+}
+
+em,
+.cm-em {
+    color: var(--vhs-purple);
+    font-style: italic;
+}
+
+/* ============================================ */
+/* LISTS */
+/* ============================================ */
+
+ul,
+ol {
+    padding-left: 1.5em;
+}
+
+li {
+    margin: 0.25em 0;
+}
+
+.markdown-preview-view ul > li,
+.markdown-preview-view ol > li {
+    color: var(--text-normal);
+}
+
+/* ============================================ */
+/* CHECKBOXES / TASKS */
+/* ============================================ */
+
+input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--checkbox-border-color);
+    border-radius: var(--radius-s);
+    background-color: var(--background-primary);
+    cursor: pointer;
+    position: relative;
+    margin-right: 8px;
+}
+
+input[type="checkbox"]:hover {
+    border-color: var(--checkbox-border-color-hover);
+}
+
+input[type="checkbox"]:checked {
+    background-color: var(--checkbox-done-color);
+    border-color: var(--checkbox-done-color);
+}
+
+input[type="checkbox"]:checked::after {
+    content: "✓";
+    color: var(--checkbox-done-marker-color);
+    position: absolute;
+    top: -3px;
+    left: 2px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* ============================================ */
+/* BLOCKQUOTES */
+/* ============================================ */
+
+blockquote {
+    border-left: 4px solid var(--blockquote-border-color);
+    background-color: var(--blockquote-background-color);
+    color: var(--blockquote-color);
+    padding: 12px 16px;
+    margin: 16px 0;
+    border-radius: var(--radius-m);
+}
+
+/* ============================================ */
+/* CALLOUTS (Enhanced with LYT Mode styling) */
+/* ============================================ */
+
+.callout {
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-left-width: 4px;
+    border-radius: var(--radius-m);
+    padding: 0;
+    margin: 16px 0;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.callout-title {
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    margin: 0;
+    background-color: rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.callout-content {
+    padding: 12px 16px;
+    background-color: var(--vhs-bg-secondary);
+}
+
+.callout-icon {
+    display: flex;
+    align-items: center;
+}
+
+.callout-title-inner,
+.callout-fold,
+.callout-icon {
+    filter: brightness(1.2);
+}
+
+/* Callout type styling */
+.callout[data-callout="note"] {
+    border-left-color: var(--callout-note);
+}
+
+.callout[data-callout="note"] .callout-title {
+    color: var(--callout-note);
+    background-color: rgba(120, 169, 255, 0.1);
+}
+
+.callout[data-callout="warning"],
+.callout[data-callout="caution"],
+.callout[data-callout="attention"] {
+    border-left-color: var(--callout-warning);
+}
+
+.callout[data-callout="warning"] .callout-title,
+.callout[data-callout="caution"] .callout-title,
+.callout[data-callout="attention"] .callout-title {
+    color: var(--callout-warning);
+    background-color: rgba(255, 204, 102, 0.1);
+}
+
+.callout[data-callout="tip"],
+.callout[data-callout="hint"] {
+    border-left-color: var(--callout-tip);
+}
+
+.callout[data-callout="tip"] .callout-title,
+.callout[data-callout="hint"] .callout-title {
+    color: var(--callout-tip);
+    background-color: rgba(61, 221, 217, 0.1);
+}
+
+.callout[data-callout="success"],
+.callout[data-callout="check"],
+.callout[data-callout="done"] {
+    border-left-color: var(--callout-success);
+}
+
+.callout[data-callout="success"] .callout-title,
+.callout[data-callout="check"] .callout-title,
+.callout[data-callout="done"] .callout-title {
+    color: var(--callout-success);
+    background-color: rgba(66, 190, 101, 0.1);
+}
+
+.callout[data-callout="info"] {
+    border-left-color: var(--callout-info);
+}
+
+.callout[data-callout="info"] .callout-title {
+    color: var(--callout-info);
+    background-color: rgba(130, 207, 255, 0.1);
+}
+
+.callout[data-callout="danger"],
+.callout[data-callout="error"] {
+    border-left-color: var(--callout-danger);
+}
+
+.callout[data-callout="danger"] .callout-title,
+.callout[data-callout="error"] .callout-title {
+    color: var(--callout-danger);
+    background-color: rgba(238, 83, 150, 0.1);
+}
+
+.callout[data-callout="bug"] {
+    border-left-color: var(--callout-bug);
+}
+
+.callout[data-callout="bug"] .callout-title {
+    color: var(--callout-bug);
+    background-color: rgba(255, 126, 182, 0.1);
+}
+
+.callout[data-callout="example"] {
+    border-left-color: var(--callout-example);
+}
+
+.callout[data-callout="example"] .callout-title {
+    color: var(--callout-example);
+    background-color: rgba(190, 149, 255, 0.1);
+}
+
+.callout[data-callout="quote"],
+.callout[data-callout="cite"] {
+    border-left-color: var(--callout-quote);
+}
+
+.callout[data-callout="quote"] .callout-title,
+.callout[data-callout="cite"] .callout-title {
+    color: var(--callout-quote);
+    background-color: rgba(82, 82, 82, 0.15);
+}
+
+/* ============================================ */
+/* HORIZONTAL RULES */
+/* ============================================ */
+
+hr {
+    border: none;
+    border-top: 2px solid var(--hr-color);
+    margin: 24px 0;
+}
+
+/* ============================================ */
+/* TABLES */
+/* ============================================ */
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 16px 0;
+}
+
+th {
+    background-color: var(--table-header-background);
+    color: var(--table-header-color);
+    font-weight: 600;
+    padding: 8px 12px;
+    border: 1px solid var(--table-border-color);
+}
+
+td {
+    padding: 8px 12px;
+    border: 1px solid var(--table-border-color);
+}
+
+tr:nth-child(even) {
+    background-color: var(--table-row-even-background);
+}
+
+tr:nth-child(odd) {
+    background-color: var(--table-row-odd-background);
+}
+
+/* ============================================ */
+/* TAGS */
+/* ============================================ */
+
+.tag,
+a.tag {
+    color: var(--tag-color);
+    background-color: var(--tag-background);
+    border-radius: var(--radius-m);
+    padding: 2px 8px;
+    font-size: 0.9em;
+    text-decoration: none;
+}
+
+.tag:hover,
+a.tag:hover {
+    color: var(--tag-color-hover);
+    background-color: var(--tag-background-hover);
+}
+
+/* ============================================ */
+/* SELECTION & HIGHLIGHTS */
+/* ============================================ */
+
+::selection {
+    background-color: var(--text-selection-bg);
+}
+
+mark,
+.markdown-preview-view mark {
+    background-color: var(--highlight-bg);
+    color: var(--background-primary);
+    padding: 2px 4px;
+    border-radius: var(--radius-s);
+}
+
+/* Search highlights */
+.search-result-file-match {
+    background-color: var(--search-result-background);
+}
+
+/* ============================================ */
+/* SCROLLBARS */
+/* ============================================ */
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--scrollbar-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb-bg);
+    border-radius: var(--radius-m);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-active-thumb-bg);
+}
+
+/* ============================================ */
+/* SIDEBAR & NAVIGATION */
+/* ============================================ */
+
+.nav-file-title,
+.nav-folder-title {
+    color: var(--nav-item-color);
+    padding: 4px 8px;
+    border-radius: var(--radius-s);
+}
+
+.nav-file-title:hover,
+.nav-folder-title:hover {
+    color: var(--nav-item-color-hover);
+    background-color: var(--nav-item-background-hover);
+}
+
+.nav-file-title.is-active {
+    background-color: var(--nav-item-background-active);
+    color: var(--text-accent);
+}
+
+/* ============================================ */
+/* BUTTONS */
+/* ============================================ */
+
+button,
+.button {
+    background-color: var(--button-background);
+    color: var(--button-text);
+    border: none;
+    padding: 8px 16px;
+    border-radius: var(--radius-m);
+    cursor: pointer;
+    font-family: var(--font-interface);
+    font-size: 14px;
+}
+
+button:hover,
+.button:hover {
+    background-color: var(--button-background-hover);
+}
+
+/* ============================================ */
+/* INPUTS */
+/* ============================================ */
+
+input[type="text"],
+input[type="search"],
+input[type="email"],
+input[type="password"],
+textarea {
+    background-color: var(--input-background);
+    color: var(--text-normal);
+    border: 1px solid var(--input-border);
+    border-radius: var(--radius-m);
+    padding: 8px 12px;
+    font-family: var(--font-interface);
+    font-size: 14px;
+}
+
+input[type="text"]:hover,
+input[type="search"]:hover,
+input[type="email"]:hover,
+input[type="password"]:hover,
+textarea:hover {
+    border-color: var(--input-border-hover);
+}
+
+input[type="text"]:focus,
+input[type="search"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus {
+    border-color: var(--input-border-focus);
+    outline: none;
+}
+
+/* ============================================ */
+/* MODALS & DIALOGS */
+/* ============================================ */
+
+.modal {
+    background-color: var(--modal-background);
+    border: 1px solid var(--modal-border);
+    border-radius: var(--radius-l);
+}
+
+/* ============================================ */
+/* TABS */
+/* ============================================ */
+
+.workspace-tab-header {
+    color: var(--tab-text-color);
+}
+
+.workspace-tab-header:hover {
+    color: var(--tab-text-color-hover);
+}
+
+.workspace-tab-header.is-active {
+    color: var(--tab-text-color-active);
+}
+
+/* ============================================ */
+/* GRAPH VIEW */
+/* ============================================ */
+
+.graph-view.color-fill {
+    color: var(--graph-node);
+}
+
+.graph-view.color-fill-tag {
+    color: var(--graph-node-tag);
+}
+
+.graph-view.color-fill-attachment {
+    color: var(--graph-node-attachment);
+}
+
+.graph-view.color-fill-unresolved {
+    color: var(--graph-node-unresolved);
+}
+
+.graph-view.color-line {
+    color: var(--graph-line);
+}
+
+.graph-view.color-line-highlight {
+    color: var(--graph-line-highlight);
+}
+
+/* ============================================ */
+/* CUSTOM CHECKBOX ICONS (from LYT Mode) */
+/* ============================================ */
+
+/* Alternative Checkbox List Text */
+.markdown-source-view.mod-cm6 .HyperMD-task-line:is([data-task="!"],[data-task="/"],[data-task="?"],[data-task="n"],[data-task="*"],[data-task="l"],[data-task="i"],[data-task="<"],[data-task="S"],[data-task="\""],[data-task="I"],[data-task="p"],[data-task="c"],[data-task="b"]),
+ul > li.task-list-item.is-checked[data-task]:is([data-task="!"],[data-task="/"],[data-task="?"],[data-task="n"],[data-task="*"],[data-task="l"],[data-task="i"],[data-task="<"],[data-task="S"],[data-task="\""],[data-task="I"],[data-task="p"],[data-task="c"],[data-task="b"],[data-task="f"],[data-task="w"],[data-task="k"],[data-task="u"],[data-task="d"]) {
+    color: var(--text-normal);
+    text-decoration: none;
+}
+
+/* Remove Check Mark for Custom Checkboxes */
+input[type=checkbox][data-task]:is([data-task="!"],[data-task="/"],[data-task="?"],[data-task="n"],[data-task="*"],[data-task="l"],[data-task="i"],[data-task="<"],[data-task="S"],[data-task="\""],[data-task="I"],[data-task="p"],[data-task="c"],[data-task="b"],[data-task="f"],[data-task="w"],[data-task="k"],[data-task="u"],[data-task="d"]):checked:after,
+.markdown-preview-view li:is([data-task="!"],[data-task="/"],[data-task="?"],[data-task="n"],[data-task="*"],[data-task="l"],[data-task="i"],[data-task="<"],[data-task="S"],[data-task="\""],[data-task="I"],[data-task="p"],[data-task="c"],[data-task="b"],[data-task="f"],[data-task="w"],[data-task="k"],[data-task="u"],[data-task="d"]) input[type=checkbox].task-list-item-checkbox:checked:after {
+    display: none;
+}
+
+/* Faint Text for Certain Task Types */
+.markdown-source-view.mod-cm6 .HyperMD-task-line[data-task]:is([data-task=">"],[data-task="-"]),
+ul > li.task-list-item.is-checked[data-task]:is([data-task=">"],[data-task="-"]) {
+    color: var(--text-muted);
+    text-decoration: none;
+}
+
+/* Base Styling for Custom Task Icons */
+input[data-task]:checked,
+li[data-task] > input:checked {
+    background-image: none;
+    background-repeat: no-repeat;
+}
+
+/* > - Rescheduled */
+input[data-task=">"]:checked,
+li[data-task=">"] > input:checked {
+    border: none;
+    box-shadow: none;
+    cursor: default;
+    -webkit-mask-size: var(--font-text-size);
+    -webkit-mask-position: 50% 50%;
+    background-color: var(--vhs-fg-muted);
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' style='fill: %237c849c;transform: ;msFilter:;'%3E%3Cpath d='m21.426 11.095-17-8A1 1 0 0 0 3.03 4.242l1.212 4.849L12 12l-7.758 2.909-1.212 4.849a.998.998 0 0 0 1.396 1.147l17-8a1 1 0 0 0 0-1.81z'%3E%3C/path%3E%3C/svg%3E");
+}
+
+/* < - Scheduled */
+input[data-task="<"]:checked,
+li[data-task="<"] > input:checked {
+    border: none;
+    box-shadow: none;
+    cursor: default;
+    -webkit-mask-size: var(--font-text-size);
+    -webkit-mask-position: 50% 50%;
+    background-color: var(--vhs-blue-light);
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' style='fill: %237c849c;transform: ;msFilter:;'%3E%3Cpath d='M5 22h14c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2h-2V2h-2v2H9V2H7v2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2zM5 7h14v2H5V7z'%3E%3C/path%3E%3C/svg%3E");
+}
+
+/* ! - Important */
+input[data-task="!"]:checked,
+li[data-task="!"] > input:checked {
+    border: none;
+    box-shadow: none;
+    cursor: default;
+    -webkit-mask-size: calc(var(--font-text-size) + 4px);
+    -webkit-mask-position: 50% 50%;
+    background-color: var(--vhs-yellow);
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' style='fill: rgba(0, 0, 0, 1);transform: ;msFilter:;'%3E%3Cpath d='M12.884 2.532c-.346-.654-1.422-.654-1.768 0l-9 17A.999.999 0 0 0 3 21h18a.998.998 0 0 0 .883-1.467L12.884 2.532zM13 18h-2v-2h2v2zm-2-4V9h2l.001 5H11z'%3E%3C/path%3E%3C/svg%3E");
+}
+
+/* - - Cancelled */
+input[data-task="-"]:checked,
+li[data-task="-"] > input:checked {
+    border: none;
+    box-shadow: none;
+    cursor: default;
+    -webkit-mask-size: var(--font-text-size);
+    -webkit-mask-position: 50% 50%;
+    background-color: var(--vhs-fg-muted);
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' style='fill: %237c849c;transform: ;msFilter:;'%3E%3Cpath d='M5 11h14v2H5z'%3E%3C/path%3E%3C/svg%3E");
+}
+
+/* / - In Progress */
+input[data-task="/"]:checked,
+li[data-task="/"] > input:checked {
+    cursor: default;
+    background-position: center;
+    background-size: 100%;
+    background: linear-gradient(to left, var(--vhs-bg-primary) 50%, var(--vhs-cyan) 50%);
+}
+
+/* ? - Question */
+input[data-task="?"]:checked,
+li[data-task="?"] > input:checked {
+    border: none;
+    box-shadow: none;
+    cursor: default;
+    -webkit-mask-size: var(--font-text-size);
+    -webkit-mask-position: 50% 50%;
+    background-color: var(--vhs-green);
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' style='fill: %237c849c;' viewBox='0 0 512 512'%3E%3C!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --%3E%3Cpath d='M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM256 400c-18 0-32-14-32-32s13.1-32 32-32c17.1 0 32 14 32 32S273.1 400 256 400zM325.1 258L280 286V288c0 13-11 24-24 24S232 301 232 288V272c0-8 4-16 12-21l57-34C308 213 312 206 312 198C312 186 301.1 176 289.1 176h-51.1C225.1 176 216 186 216 198c0 13-11 24-24 24s-24-11-24-24C168 159 199 128 237.1 128h51.1C329 128 360 159 360 198C360 222 347 245 325.1 258z'/%3E%3C/svg%3E");
+}
+
+/* * - Star */
+input[data-task="*"]:checked,
+li[data-task="*"] > input:checked {
+    border: none;
+    box-shadow: none;
+    cursor: default;
+    -webkit-mask-size: var(--font-text-size);
+    -webkit-mask-position: 50% 50%;
+    background-color: var(--vhs-yellow);
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' style='fill: rgba(0, 0, 0, 1);transform: ;msFilter:;'%3E%3Cpath d='M21.947 9.179a1.001 1.001 0 0 0-.868-.676l-5.701-.453-2.467-5.461a.998.998 0 0 0-1.822-.001L8.622 8.05l-5.701.453a1 1 0 0 0-.619 1.713l4.213 4.107-1.49 6.452a1 1 0 0 0 1.53 1.057L12 18.202l5.445 3.63a1.001 1.001 0 0 0 1.517-1.106l-1.829-6.4 4.536-4.082c.297-.268.406-.686.278-1.065z'%3E%3C/path%3E%3C/svg%3E");
+}
+
+/* n - Note */
+input[data-task="n"]:checked,
+li[data-task="n"] > input:checked {
+    border: none;
+    box-shadow: none;
+    cursor: default;
+    transform: rotate(45deg);
+    -webkit-mask-size: calc(var(--font-text-size) + 4px);
+    -webkit-mask-position: 50% 50%;
+    background-color: var(--vhs-pink-param);
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' style='fill: rgba(0, 0, 0, 1);transform: ;msFilter:;'%3E%3Cpath d='M15 11.586V6h2V4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2h2v5.586l-2.707 1.707A.996.996 0 0 0 6 14v2a1 1 0 0 0 1 1h4v3l1 2 1-2v-3h4a1 1 0 0 0 1-1v-2a.996.996 0 0 0-.293-.707L15 11.586z'%3E%3C/path%3E%3C/svg%3E");
+}
+
+/* l - Location */
+input[data-task="l"]:checked,
+li[data-task="l"] > input:checked {
+    border: none;
+    box-shadow: none;
+    cursor: default;
+    -webkit-mask-size: calc(4px + var(--font-text-size));
+    -webkit-mask-position: 50% 50%;
+    background-color: var(--vhs-pink);
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 21C10.7369 19.9226 9.56619 18.7415 8.5 17.469C6.9 15.558 5 12.712 5 9.99999C4.99858 7.16754 6.70425 4.61338 9.32107 3.52939C11.9379 2.44539 14.9501 3.04523 16.952 5.04899C18.2685 6.3596 19.0059 8.14238 19 9.99999C19 12.712 17.1 15.558 15.5 17.469C14.4338 18.7415 13.2631 19.9226 12 21ZM12 6.99999C10.9282 6.99999 9.93782 7.57179 9.40193 8.49999C8.86603 9.42819 8.86603 10.5718 9.40193 11.5C9.93782 12.4282 10.9282 13 12 13C13.6569 13 15 11.6568 15 9.99999C15 8.34313 13.6569 6.99999 12 6.99999Z' fill='%237c849c'%3E%3C/path%3E%3C/svg%3E%0A");
+}
+
+/* i - Info */
+input[data-task="i"]:checked,
+li[data-task="i"] > input:checked {
+    border: none;
+    box-shadow: none;
+    cursor: default;
+    -webkit-mask-size: calc(4px + var(--font-text-size));
+    -webkit-mask-position: 50% 50%;
+    background-color: var(--vhs-blue);
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' style='fill: rgba(0, 0, 0, 1);transform: ;msFilter:;'%3E%3Cpath d='M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z'%3E%3C/path%3E%3C/svg%3E");
+}
+
+/* S - Amount/Dollar */
+input[data-task="S"]:checked,
+li[data-task="S"] > input:checked {
+    border: none;
+    box-shadow: none;
+    cursor: default;
+    -webkit-mask-size: calc(4px + var(--font-text-size));
+    -webkit-mask-position: 50% 50%;
+    background-color: var(--vhs-green);
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' style='fill: %237c849c;transform: ;msFilter:;'%3E%3Cpath d='M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm1 14.915V18h-2v-1.08c-2.339-.367-3-2.002-3-2.92h2c.011.143.159 1 2 1 1.38 0 2-.585 2-1 0-.324 0-1-2-1-3.48 0-4-1.88-4-3 0-1.288 1.029-2.584 3-2.915V6.012h2v1.109c1.734.41 2.4 1.853 2.4 2.879h-1l-1 .018C13.386 9.638 13.185 9 12 9c-1.299 0-2 .516-2 1 0 .374 0 1 2 1 3.48 0 4 1.88 4 3 0 1.288-1.029 2.584-3 2.915z'%3E%3C/path%3E%3C/svg%3E");
+}
+
+/* " - Quote */
+input[data-task="\""]:checked,
+li[data-task="\""] > input:checked {
+    border: none;
+    border-radius: 50%;
+    box-shadow: none;
+    cursor: default;
+    filter: none;
+    -webkit-mask-size: calc(var(--font-text-size) + 2px);
+    -webkit-mask-position: 50% 50%;
+    background-color: var(--vhs-purple);
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' style='fill: rgb(45, 48, 57);transform: ;msFilter:;'%3E%3Cpath d='m21.95 8.721-.025-.168-.026.006A4.5 4.5 0 1 0 17.5 14c.223 0 .437-.034.65-.065-.069.232-.14.468-.254.68-.114.308-.292.575-.469.844-.148.291-.409.488-.601.737-.201.242-.475.403-.692.604-.213.21-.492.315-.714.463-.232.133-.434.28-.65.35l-.539.222-.474.197.484 1.939.597-.144c.191-.048.424-.104.689-.171.271-.05.56-.187.882-.312.317-.143.686-.238 1.028-.467.344-.218.741-.4 1.091-.692.339-.301.748-.562 1.05-.944.33-.358.656-.734.909-1.162.293-.408.492-.856.702-1.299.19-.443.343-.896.468-1.336.237-.882.343-1.72.384-2.437.034-.718.014-1.315-.028-1.747a7.028 7.028 0 0 0-.063-.539zm-11 0-.025-.168-.026.006A4.5 4.5 0 1 0 6.5 14c.223 0 .437-.034.65-.065-.069.232-.14.468-.254.68-.114.308-.292.575-.469.844-.148.291-.409.488-.601.737-.201.242-.475.403-.692.604-.213.21-.492.315-.714.463-.232.133-.434.28-.65.35l-.539.222c-.301.123-.473.195-.473.195l.484 1.939.597-.144c.191-.048.424-.104.689-.171.271-.05.56-.187.882-.312.317-.143.686-.238 1.028-.467.344-.218.741-.4 1.091-.692.339-.301.748-.562 1.05-.944.33-.358.656-.734.909-1.162.293-.408.492-.856.702-1.299.19-.443.343-.896.468-1.336.237-.882.343-1.72.384-2.437.034-.718.014-1.315-.028-1.747a7.571 7.571 0 0 0-.064-.537z'%3E%3C/path%3E%3C/svg%3E");
+}
+
+/* I - Idea/Lightbulb */
+input[data-task="I"]:checked,
+li[data-task="I"] > input:checked {
+    border: none;
+    box-shadow: none;
+    cursor: default;
+    -webkit-mask-size: var(--font-text-size);
+    -webkit-mask-position: 50% 50%;
+    background-color: var(--vhs-yellow);
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' style='fill: %237c849c;transform: ;msFilter:;'%3E%3Cpath d='M9 20h6v2H9zm7.906-6.288C17.936 12.506 19 11.259 19 9c0-3.859-3.141-7-7-7S5 5.141 5 9c0 2.285 1.067 3.528 2.101 4.73.358.418.729.851 1.084 1.349.144.206.38.996.591 1.921h-.792v2h8.032v-2h-.79c.213-.927.45-1.719.593-1.925.352-.503.726-.94 1.087-1.363z'%3E%3C/path%3E%3C/svg%3E");
+}
+
+/* p - Pro/Thumbs Up */
+input[data-task="p"]:checked,
+li[data-task="p"] > input:checked {
+    border: none;
+    box-shadow: none;
+    cursor: default;
+    -webkit-mask-size: var(--font-text-size);
+    -webkit-mask-position: 50% 50%;
+    background-color: var(--vhs-green);
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' style='fill: %237c849c;transform: ;msFilter:;'%3E%3Cpath d='M4 21h1V8H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2zM20 8h-7l1.122-3.368A2 2 0 0 0 12.225 2H12L7 7.438V21h11l3.912-8.596L22 12v-2a2 2 0 0 0-2-2z'%3E%3C/path%3E%3C/svg%3E");
+}
+
+/* c - Con/Thumbs Down */
+input[data-task="c"]:checked,
+li[data-task="c"] > input:checked {
+    border: none;
+    box-shadow: none;
+    cursor: default;
+    -webkit-mask-size: var(--font-text-size);
+    -webkit-mask-position: 50% 50%;
+    background-color: var(--vhs-pink);
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' style='fill: %237c849c;transform: ;msFilter:;'%3E%3Cpath d='M20 3h-1v13h1a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zM4 16h7l-1.122 3.368A2 2 0 0 0 11.775 22H12l5-5.438V3H6l-3.937 8.649-.063.293V14a2 2 0 0 0 2 2z'%3E%3C/path%3E%3C/svg%3E");
+}
+
+/* b - Bookmark */
+input[data-task="b"]:checked,
+li[data-task="b"] > input:checked {
+    border: none;
+    box-shadow: none;
+    cursor: default;
+    -webkit-mask-size: var(--font-text-size);
+    -webkit-mask-position: 50% 50%;
+    background-color: var(--vhs-pink);
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' style='fill: %237c849c;transform: ;msFilter:;'%3E%3Cpath d='M19 10.132v-6c0-1.103-.897-2-2-2H7c-1.103 0-2 .897-2 2V22l7-4.666L19 22V10.132z'%3E%3C/path%3E%3C/svg%3E");
+}
+
+/* f - Fire */
+input[data-task="f"]:checked,
+li[data-task="f"] > input:checked {
+    border: none;
+    box-shadow: none;
+    cursor: default;
+    -webkit-mask-size: var(--font-text-size);
+    -webkit-mask-position: 50% 50%;
+    background-color: var(--vhs-pink-param);
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' style='fill: %237c849c;transform: ;msFilter:;'%3E%3Cpath d='M16.5 8c0 1.5-.5 3.5-2.9 4.3.7-1.7.8-3.4.3-5-.7-2.1-3-3.7-4.6-4.6-.4-.3-1.1.1-1 .7 0 1.1-.3 2.7-2 4.4C4.1 10 3 12.3 3 14.5 3 17.4 5 21 9 21c-4-4-1-7.5-1-7.5.8 5.9 5 7.5 7 7.5 1.7 0 5-1.2 5-6.4 0-3.1-1.3-5.5-2.4-6.9-.3-.5-1-.2-1.1.3'%3E%3C/path%3E%3C/svg%3E");
+}
+
+/* w - Win/Trophy */
+input[data-task="w"]:checked,
+li[data-task="w"] > input:checked {
+    border: none;
+    box-shadow: none;
+    cursor: default;
+    -webkit-mask-size: var(--font-text-size);
+    -webkit-mask-position: 50% 50%;
+    background-color: var(--vhs-purple);
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' style='fill: %237c849c;transform: ;msFilter:;'%3E%3Cpath d='M23 7a8.44 8.44 0 0 0-5 1.31c-.36-.41-.73-.82-1.12-1.21l-.29-.27.14-.12a3.15 3.15 0 0 0 .9-3.49A3.9 3.9 0 0 0 14 1v2a2 2 0 0 1 1.76 1c.17.4 0 .84-.47 1.31l-.23.21a16.71 16.71 0 0 0-3.41-2.2c-2.53-1.14-3.83-.61-4.47 0a2.18 2.18 0 0 0-.46.68l-.18.53L5.1 8.87C6.24 11.71 9 16.76 15 18.94l5-1.66a1 1 0 0 0 .43-.31l.21-.18c1.43-1.44.51-4.21-1.41-6.9A6.63 6.63 0 0 1 23 9zm-3.79 8.37h-.06c-.69.37-3.55-.57-6.79-3.81-.34-.34-.66-.67-.95-1-.1-.11-.19-.23-.29-.35l-.53-.64-.28-.39c-.14-.19-.28-.38-.4-.56s-.16-.26-.24-.39-.22-.34-.31-.51-.13-.24-.19-.37-.17-.28-.23-.42-.09-.23-.14-.34-.11-.27-.15-.4S8.6 6 8.58 5.9s-.06-.24-.08-.34a2 2 0 0 1 0-.24 1.15 1.15 0 0 1 0-.26l.11-.31c.17-.18.91-.23 2.23.37a13.83 13.83 0 0 1 2.49 1.54A4.17 4.17 0 0 1 12 7v2a6.43 6.43 0 0 0 3-.94l.49.46c.44.43.83.86 1.19 1.27A5.31 5.31 0 0 0 16 13.2l2-.39a3.23 3.23 0 0 1 0-1.14c1.29 1.97 1.53 3.39 1.21 3.7zM4.4 11l-2.23 6.7A3.28 3.28 0 0 0 5.28 22a3.21 3.21 0 0 0 1-.17l6.52-2.17A18.7 18.7 0 0 1 4.4 11z'%3E%3C/path%3E%3C/svg%3E");
+}
+
+/* k - Key */
+input[data-task="k"]:checked,
+li[data-task="k"] > input:checked {
+    border: none;
+    box-shadow: none;
+    cursor: default;
+    -webkit-mask-size: var(--font-text-size);
+    -webkit-mask-position: 50% 50%;
+    background-color: var(--vhs-yellow);
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' style='fill: %237c849c;' viewBox='0 0 512 512'%3E%3C!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --%3E%3Cpath d='M282.3 343.7L248.1 376.1C244.5 381.5 238.4 384 232 384H192V424C192 437.3 181.3 448 168 448H128V488C128 501.3 117.3 512 104 512H24C10.75 512 0 501.3 0 488V408C0 401.6 2.529 395.5 7.029 391L168.3 229.7C162.9 212.8 160 194.7 160 176C160 78.8 238.8 0 336 0C433.2 0 512 78.8 512 176C512 273.2 433.2 352 336 352C317.3 352 299.2 349.1 282.3 343.7zM376 176C398.1 176 416 158.1 416 136C416 113.9 398.1 96 376 96C353.9 96 336 113.9 336 136C336 158.1 353.9 176 376 176z'/%3E%3C/svg%3E");
+}
+
+/* u - Up/Trend Up */
+input[data-task="u"]:checked,
+li[data-task="u"] > input:checked {
+    border: none;
+    box-shadow: none;
+    cursor: default;
+    -webkit-mask-size: var(--font-text-size);
+    -webkit-mask-position: 50% 50%;
+    background-color: var(--vhs-green);
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13 13.414C13.1875 13.6015 13.4418 13.7069 13.707 13.707H14.293C14.5582 13.7069 14.8125 13.6015 15 13.414L19.707 8.707L22 11V5H16L18.293 7.293L14 11.586L11 8.586C10.8125 8.39845 10.5582 8.29306 10.293 8.293H9.70697C9.44177 8.29306 9.18746 8.39845 8.99997 8.586L2.29297 15.293L3.70697 16.707L9.99997 10.414L13 13.414Z' fill='%237c849c'%3E%3C/path%3E%3C/svg%3E%0A");
+}
+
+/* d - Down/Trend Down */
+input[data-task="d"]:checked,
+li[data-task="d"] > input:checked {
+    border: none;
+    box-shadow: none;
+    cursor: default;
+    -webkit-mask-size: var(--font-text-size);
+    -webkit-mask-position: 50% 50%;
+    background-color: var(--vhs-pink-param);
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13 10.586C13.1875 10.3985 13.4418 10.2931 13.707 10.293H14.293C14.5582 10.2931 14.8125 10.3985 15 10.586L19.707 15.293L22 13V19H16L18.293 16.707L14 12.414L11 15.414C10.8125 15.6015 10.5582 15.7069 10.293 15.707H9.70697C9.44177 15.7069 9.18746 15.6015 8.99997 15.414L2.29297 8.707L3.70697 7.293L9.99997 13.586L13 10.586Z' fill='%237c849c'%3E%3C/path%3E%3C/svg%3E%0A");
+}

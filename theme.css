@@ -1044,8 +1044,42 @@ textarea:focus {
     color: var(--tab-text-color-hover);
 }
 
-.workspace-tab-header.is-active {
-    color: var(--tab-text-color-active);
+/* Sidebar tabs (left/right) - lighter background */
+.theme-dark .mod-left-split .workspace-tab-header.is-active,
+.theme-dark .mod-right-split .workspace-tab-header.is-active,
+.theme-dark .mod-left-split .workspace-tab-header.is-active:hover,
+.theme-dark .mod-right-split .workspace-tab-header.is-active:hover {
+    background: var(--color-base-30);
+}
+
+.theme-dark .workspace-tab-header.is-active .workspace-tab-header-inner-icon svg,
+.theme-dark .workspace-tab-header.is-active:hover .workspace-tab-header-inner-icon svg,
+.theme-dark .workspace-tab-header.is-active:active .workspace-tab-header-inner-icon svg {
+    color: var(--vhs-cyan);
+}
+
+/* Main content area tabs - colored border and text */
+.theme-dark .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header.is-active.mod-active {
+    color: var(--vhs-cyan);
+    border-top: 2px solid var(--vhs-cyan);
+}
+
+.theme-dark .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header.is-active.mod-active .workspace-tab-header-inner-close-button,
+.theme-dark .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header.is-active.mod-active .workspace-tab-header-inner-icon svg,
+.theme-dark .workspace-tabs:not(.mod-stacked) .workspace-tab-header.is-active.mod-active .workspace-tab-header-inner-title {
+    color: var(--vhs-cyan);
+}
+
+/* Stacked tabs - colored border and text */
+.theme-dark .mod-root .workspace-tabs.mod-stacked .workspace-tab-header.is-active.mod-active {
+    color: var(--vhs-cyan);
+    border-left: 2px solid var(--vhs-cyan);
+}
+
+.theme-dark .mod-root .workspace-tabs.mod-stacked .workspace-tab-header.is-active.mod-active .workspace-tab-header-inner-close-button,
+.theme-dark .mod-root .workspace-tabs.mod-stacked .workspace-tab-header.is-active.mod-active .workspace-tab-header-inner-icon svg,
+.theme-dark .workspace-tabs.mod-stacked .workspace-tab-header.is-active.mod-active .workspace-tab-header-inner-title {
+    color: var(--vhs-cyan);
 }
 
 /* ============================================ */

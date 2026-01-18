@@ -5,6 +5,8 @@ A retro, high-contrast dark theme for Obsidian that brings the nostalgic VHS aes
 ![Version](https://img.shields.io/badge/version-0.1.0-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
+![VHS Era Theme Showcase](showcase-large.png)
+
 ## Features
 
 - 🎨 **Retro VHS Aesthetic**: Dark backgrounds with vibrant cyan, pink, and purple accents

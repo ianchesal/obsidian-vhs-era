@@ -1,6 +1,6 @@
 /*
 VHS Era Theme for Obsidian
-Version: 0.1.0
+Version: 0.2.0
 Author: Ian Chesal
 License: MIT
 
@@ -8,7 +8,8 @@ Based on:
 - VHS Era Neovim Theme by Mistweaver Co. (https://github.com/mistweaverco/vhs-era-theme.nvim)
 - LYT Mode by Nick Milo (https://github.com/nickmilo/LYT-Mode)
 
-A retro, high-contrast dark theme bringing the VHS Era aesthetic to Obsidian.
+A retro, high-contrast theme bringing the VHS Era aesthetic to Obsidian.
+Available in both dark and light modes.
 */
 
 /* Import additional stylesheets */

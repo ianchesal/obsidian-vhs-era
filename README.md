@@ -2,7 +2,7 @@
 
 A retro, high-contrast theme for Obsidian that brings the nostalgic VHS aesthetic to your note-taking experience. Available in both dark and light modes, this theme combines the vibrant color palette of the VHS Era Neovim theme with the thoughtful structure of LYT-Mode, creating a unique visual experience that's both functional and stylish.
 
-![Version](https://img.shields.io/badge/version-0.1.0-blue)
+![Version](https://img.shields.io/badge/version-0.2.0-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
 ![VHS Era Theme Showcase](showcase-large.png)

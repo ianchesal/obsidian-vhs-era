@@ -49,10 +49,10 @@ A retro, high-contrast dark theme bringing the VHS Era aesthetic to Obsidian.
     /* ======================================== */
 
     /* Backgrounds */
-    --background-primary: var(--vhs-bg-primary);
-    --background-primary-alt: var(--vhs-bg-secondary);
-    --background-secondary: var(--vhs-bg-primary);
-    --background-secondary-alt: var(--vhs-bg-secondary);
+    --background-primary: var(--color-base-20);        /* Main editor area - lighter */
+    --background-primary-alt: var(--vhs-bg-primary);   /* Sidebars - darker */
+    --background-secondary: var(--vhs-bg-secondary);   /* UI elements - darkest */
+    --background-secondary-alt: var(--vhs-bg-primary); /* Alt UI elements */
     --background-modifier-border: var(--vhs-fg-muted);
     --background-modifier-form-field: var(--vhs-bg-secondary);
     --background-modifier-form-field-highlighted: var(--vhs-selection);

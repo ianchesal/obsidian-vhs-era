@@ -28,7 +28,8 @@ Available in both dark and light modes.
     --vhs-white: #ffffff;
 
     /* VHS Era Selection & UI */
-    --vhs-selection: #353535;
+    --vhs-selection: #525252;
+    --vhs-active-line: #242424;
     --vhs-search: #484848;
     --vhs-cursor: #ffffff;
 
@@ -377,6 +378,7 @@ Available in both dark and light modes.
 
     /* VHS Era Light Selection & UI */
     --vhs-selection: #d0cdc0;
+    --vhs-active-line: #e0ddd0;
     --vhs-search: #c8c5b8;
     --vhs-cursor: #1a1a1a;
 
@@ -2001,7 +2003,7 @@ Additional styling for Obsidian UI elements, plugins, and special features
 
 /* Active line highlight */
 .cm-active.cm-line {
-    background-color: var(--vhs-selection);
+    background-color: var(--vhs-active-line);
 }
 
 /* Cursor */

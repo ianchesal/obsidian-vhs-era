@@ -1,6 +1,6 @@
 /*
 VHS Era Theme for Obsidian
-Version: 0.1.0
+Version: 0.2.0
 Author: Ian Chesal
 License: MIT
 
@@ -8,7 +8,8 @@ Based on:
 - VHS Era Neovim Theme by Mistweaver Co. (https://github.com/mistweaverco/vhs-era-theme.nvim)
 - LYT Mode by Nick Milo (https://github.com/nickmilo/LYT-Mode)
 
-A retro, high-contrast dark theme bringing the VHS Era aesthetic to Obsidian.
+A retro, high-contrast theme bringing the VHS Era aesthetic to Obsidian.
+Available in both dark and light modes.
 */
 
 /* Import additional stylesheets */
@@ -320,6 +321,354 @@ A retro, high-contrast dark theme bringing the VHS Era aesthetic to Obsidian.
     --button-background: var(--vhs-blue);
     --button-background-hover: var(--vhs-blue-light);
     --button-text: var(--vhs-white);
+
+    /* Inputs */
+    --input-background: var(--vhs-bg-secondary);
+    --input-border: var(--vhs-fg-muted);
+    --input-border-hover: var(--vhs-blue);
+    --input-border-focus: var(--vhs-cyan);
+
+    /* Tabs */
+    --tab-text-color: var(--vhs-fg-muted);
+    --tab-text-color-active: var(--vhs-fg-primary);
+    --tab-text-color-hover: var(--vhs-blue);
+
+    /* Sidebar */
+    --nav-item-color: var(--vhs-fg-primary);
+    --nav-item-color-hover: var(--vhs-blue);
+    --nav-item-background-hover: var(--vhs-selection);
+    --nav-item-background-active: var(--vhs-search);
+
+    /* ======================================== */
+    /* SIZING & SPACING */
+    /* ======================================== */
+
+    --size-2-1: 2px;
+    --size-2-2: 4px;
+    --size-2-3: 6px;
+    --size-4-1: 4px;
+    --size-4-2: 8px;
+    --size-4-3: 12px;
+    --size-4-4: 16px;
+    --size-4-5: 20px;
+    --size-4-6: 24px;
+    --size-4-8: 32px;
+    --size-4-12: 48px;
+    --size-4-16: 64px;
+
+    --radius-s: 2px;
+    --radius-m: 4px;
+    --radius-l: 8px;
+    --radius-xl: 12px;
+}
+
+/* ============================================ */
+/* LIGHT MODE - VHS ERA WARM PALETTE */
+/* ============================================ */
+
+.theme-light {
+    /* VHS Era Light Base Colors */
+    --vhs-bg-primary: #e8e5d8;
+    --vhs-bg-secondary: #e0ddd0;
+    --vhs-bg-tertiary: #d8d5c8;
+    --vhs-fg-primary: #1a1a1a;
+    --vhs-fg-muted: #5a5a5a;
+    --vhs-white: #1a1a1a;
+
+    /* VHS Era Light Selection & UI */
+    --vhs-selection: #d0cdc0;
+    --vhs-search: #c8c5b8;
+    --vhs-cursor: #1a1a1a;
+
+    /* VHS Era Light Accent Colors */
+    --vhs-blue: #4a7fd6;
+    --vhs-blue-property: #1a8fd6;
+    --vhs-blue-light: #4a9fd6;
+    --vhs-cyan: #1a9d9b;
+    --vhs-cyan-attr: #067a78;
+    --vhs-pink: #d63582;
+    --vhs-pink-param: #c72a70;
+    --vhs-purple: #8b65d6;
+    --vhs-green: #2a9650;
+    --vhs-yellow: #b88a00;
+
+    /* ======================================== */
+    /* OBSIDIAN CORE VARIABLE MAPPINGS */
+    /* ======================================== */
+
+    /* Backgrounds */
+    --background-primary: var(--vhs-bg-primary);
+    --background-primary-alt: var(--vhs-bg-secondary);
+    --background-secondary: var(--vhs-bg-primary);
+    --background-secondary-alt: var(--vhs-bg-secondary);
+    --background-modifier-border: var(--vhs-fg-muted);
+    --background-modifier-form-field: var(--vhs-bg-secondary);
+    --background-modifier-form-field-highlighted: var(--vhs-selection);
+    --background-modifier-box-shadow: rgba(0, 0, 0, 0.1);
+    --background-modifier-success: var(--vhs-green);
+    --background-modifier-error: var(--vhs-pink);
+    --background-modifier-error-rgb: 214, 53, 130;
+    --background-modifier-error-hover: var(--vhs-pink);
+    --background-modifier-cover: rgba(232, 229, 216, 0.8);
+
+    /* Text Colors */
+    --text-normal: var(--vhs-fg-primary);
+    --text-muted: var(--vhs-fg-muted);
+    --text-faint: var(--vhs-fg-muted);
+    --text-error: var(--vhs-pink);
+    --text-accent: var(--vhs-blue);
+    --text-accent-hover: var(--vhs-blue-light);
+    --text-highlight-bg: var(--vhs-yellow);
+    --text-highlight-bg-active: var(--vhs-yellow);
+    --text-selection: var(--vhs-selection);
+
+    /* Interactive Elements */
+    --interactive-normal: var(--vhs-bg-secondary);
+    --interactive-hover: var(--vhs-selection);
+    --interactive-accent: var(--vhs-blue);
+    --interactive-accent-hover: var(--vhs-blue-light);
+    --interactive-success: var(--vhs-green);
+
+    /* Scrollbars */
+    --scrollbar-bg: var(--vhs-bg-primary);
+    --scrollbar-thumb-bg: var(--vhs-fg-muted);
+    --scrollbar-active-thumb-bg: var(--vhs-blue);
+
+    /* ======================================== */
+    /* BASE COLOR SCALE (for gradients/shades) */
+    /* ======================================== */
+
+    --color-base-00: #f0ede0;
+    --color-base-05: #e8e5d8;
+    --color-base-10: #e0ddd0;
+    --color-base-20: #d8d5c8;
+    --color-base-25: #d0cdc0;
+    --color-base-30: #c8c5b8;
+    --color-base-35: #b8b5a8;
+    --color-base-40: #a8a598;
+    --color-base-50: #888578;
+    --color-base-60: #5a5a5a;
+    --color-base-70: #4a4a4a;
+    --color-base-80: #2a2a2a;
+    --color-base-90: #1a1a1a;
+    --color-base-95: #0a0a0a;
+    --color-base-100: #000000;
+
+    /* ======================================== */
+    /* ACCENT COLOR FAMILIES */
+    /* ======================================== */
+
+    /* Cyan Family */
+    --color-cyan-300: #4abfbd;
+    --color-cyan-500: var(--vhs-cyan);
+    --color-cyan-700: var(--vhs-cyan-attr);
+    --color-cyan-900: #055a58;
+
+    /* Blue Family (Primary) */
+    --color-blue-300: #6a9fd6;
+    --color-blue-500: var(--vhs-blue);
+    --color-blue-700: var(--vhs-blue-property);
+    --color-blue-900: #2a5fa6;
+
+    /* Magenta/Pink Family */
+    --color-magenta-300: #e665a2;
+    --color-magenta-500: var(--vhs-pink);
+    --color-magenta-700: var(--vhs-pink-param);
+    --color-magenta-900: #a01a50;
+
+    /* Purple Family */
+    --color-purple-300: #ab85e6;
+    --color-purple-500: var(--vhs-purple);
+    --color-purple-700: #6b45a6;
+    --color-purple-900: #4b2586;
+
+    /* Green Family */
+    --color-green-300: #4ab670;
+    --color-green-500: var(--vhs-green);
+    --color-green-700: #1a7640;
+    --color-green-900: #0a5630;
+
+    /* Yellow Family */
+    --color-yellow-300: #d8aa20;
+    --color-yellow-500: var(--vhs-yellow);
+    --color-yellow-700: #987000;
+    --color-yellow-900: #785800;
+
+    /* ======================================== */
+    /* TYPOGRAPHY */
+    /* ======================================== */
+
+    /* Headings */
+    --h1-color: var(--vhs-pink);
+    --h2-color: var(--vhs-cyan);
+    --h3-color: var(--vhs-purple);
+    --h4-color: var(--vhs-blue-light);
+    --h5-color: var(--vhs-green);
+    --h6-color: var(--vhs-yellow);
+
+    --h1-font: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --h2-font: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --h3-font: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --h4-font: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --h5-font: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --h6-font: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+    --h1-size: 2em;
+    --h2-size: 1.6em;
+    --h3-size: 1.4em;
+    --h4-size: 1.2em;
+    --h5-size: 1.1em;
+    --h6-size: 1em;
+
+    --h1-weight: 700;
+    --h2-weight: 600;
+    --h3-weight: 600;
+    --h4-weight: 600;
+    --h5-weight: 600;
+    --h6-weight: 600;
+
+    --h1-line-height: 1.3;
+    --h2-line-height: 1.3;
+    --h3-line-height: 1.3;
+    --h4-line-height: 1.4;
+    --h5-line-height: 1.4;
+    --h6-line-height: 1.4;
+
+    /* Body Text */
+    --font-text: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-monospace: 'DM Mono', 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', 'Source Code Pro', monospace;
+    --font-interface: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+    --font-text-size: 16px;
+    --font-text-theme: 'DM Sans';
+    --line-height-normal: 1.6;
+    --line-width: 45rem;
+
+    /* Font Sizes */
+    --font-smallest: 0.8em;
+    --font-smaller: 0.875em;
+    --font-small: 0.933em;
+    --font-big: 1.15em;
+
+    /* ======================================== */
+    /* LINKS */
+    /* ======================================== */
+
+    --link-color: var(--vhs-blue);
+    --link-color-hover: var(--vhs-blue-light);
+    --link-external-color: var(--vhs-cyan);
+    --link-external-color-hover: var(--vhs-cyan-attr);
+    --link-unresolved-color: var(--vhs-pink-param);
+    --link-unresolved-opacity: 0.7;
+
+    /* ======================================== */
+    /* CODE */
+    /* ======================================== */
+
+    --code-background: var(--vhs-bg-secondary);
+    --code-normal: var(--vhs-pink-param);
+    --code-comment: var(--vhs-fg-muted);
+    --code-function: var(--vhs-pink);
+    --code-keyword: var(--vhs-blue);
+    --code-string: var(--vhs-purple);
+    --code-tag: var(--vhs-cyan);
+    --code-important: var(--vhs-yellow);
+
+    /* ======================================== */
+    /* TAGS */
+    /* ======================================== */
+
+    --tag-color: var(--vhs-purple);
+    --tag-color-hover: var(--vhs-cyan);
+    --tag-background: var(--vhs-selection);
+    --tag-background-hover: var(--vhs-search);
+
+    /* ======================================== */
+    /* CHECKBOXES */
+    /* ======================================== */
+
+    --checkbox-color: var(--vhs-fg-muted);
+    --checkbox-color-hover: var(--vhs-blue);
+    --checkbox-border-color: var(--vhs-fg-muted);
+    --checkbox-border-color-hover: var(--vhs-blue);
+    --checkbox-marker-color: var(--vhs-bg-primary);
+    --checkbox-done-color: var(--vhs-green);
+    --checkbox-done-marker-color: var(--vhs-bg-primary);
+
+    /* ======================================== */
+    /* TABLES */
+    /* ======================================== */
+
+    --table-header-background: var(--vhs-bg-secondary);
+    --table-header-color: var(--vhs-cyan);
+    --table-row-even-background: var(--vhs-bg-primary);
+    --table-row-odd-background: var(--vhs-bg-secondary);
+    --table-border-color: var(--vhs-fg-muted);
+
+    /* ======================================== */
+    /* BLOCKQUOTES */
+    /* ======================================== */
+
+    --blockquote-border-color: var(--vhs-blue);
+    --blockquote-background-color: var(--vhs-bg-secondary);
+    --blockquote-color: var(--vhs-fg-primary);
+
+    /* ======================================== */
+    /* CALLOUTS */
+    /* ======================================== */
+
+    --callout-default: var(--vhs-blue);
+    --callout-note: var(--vhs-blue);
+    --callout-abstract: var(--vhs-cyan);
+    --callout-info: var(--vhs-blue-light);
+    --callout-todo: var(--vhs-blue);
+    --callout-tip: var(--vhs-cyan);
+    --callout-success: var(--vhs-green);
+    --callout-question: var(--vhs-yellow);
+    --callout-warning: var(--vhs-yellow);
+    --callout-failure: var(--vhs-pink);
+    --callout-danger: var(--vhs-pink-param);
+    --callout-bug: var(--vhs-pink);
+    --callout-example: var(--vhs-purple);
+    --callout-quote: var(--vhs-fg-muted);
+
+    /* ======================================== */
+    /* GRAPH VIEW */
+    /* ======================================== */
+
+    --graph-node: var(--vhs-blue);
+    --graph-node-unresolved: var(--vhs-pink-param);
+    --graph-node-tag: var(--vhs-purple);
+    --graph-node-attachment: var(--vhs-green);
+    --graph-line: var(--vhs-fg-muted);
+    --graph-line-highlight: var(--vhs-cyan);
+
+    /* ======================================== */
+    /* MISC UI ELEMENTS */
+    /* ======================================== */
+
+    --divider-color: var(--vhs-fg-muted);
+    --border-color: var(--vhs-fg-muted);
+    --hr-color: var(--vhs-fg-muted);
+
+    /* Search */
+    --search-result-background: var(--vhs-search);
+
+    /* Selection */
+    --text-selection-bg: var(--vhs-selection);
+
+    /* Highlights */
+    --highlight-bg: var(--vhs-yellow);
+    --highlight-bg-active: var(--vhs-yellow);
+
+    /* Modals */
+    --modal-background: var(--vhs-bg-primary);
+    --modal-border: var(--vhs-fg-muted);
+
+    /* Buttons */
+    --button-background: var(--vhs-blue);
+    --button-background-hover: var(--vhs-blue-light);
+    --button-text: var(--vhs-bg-primary);
 
     /* Inputs */
     --input-background: var(--vhs-bg-secondary);
@@ -1079,6 +1428,45 @@ textarea:focus {
 .theme-dark .mod-root .workspace-tabs.mod-stacked .workspace-tab-header.is-active.mod-active .workspace-tab-header-inner-icon svg,
 .theme-dark .workspace-tabs.mod-stacked .workspace-tab-header.is-active.mod-active .workspace-tab-header-inner-title {
     color: var(--vhs-cyan);
+}
+
+/* Light mode tab styling */
+/* Sidebar tabs (left/right) - darker background in light mode */
+.theme-light .mod-left-split .workspace-tab-header.is-active,
+.theme-light .mod-right-split .workspace-tab-header.is-active,
+.theme-light .mod-left-split .workspace-tab-header.is-active:hover,
+.theme-light .mod-right-split .workspace-tab-header.is-active:hover {
+    background: var(--color-base-30);
+}
+
+.theme-light .workspace-tab-header.is-active .workspace-tab-header-inner-icon svg,
+.theme-light .workspace-tab-header.is-active:hover .workspace-tab-header-inner-icon svg,
+.theme-light .workspace-tab-header.is-active:active .workspace-tab-header-inner-icon svg {
+    color: var(--vhs-pink);
+}
+
+/* Main content area tabs - colored border and text */
+.theme-light .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header.is-active.mod-active {
+    color: var(--vhs-pink);
+    border-top: 2px solid var(--vhs-pink);
+}
+
+.theme-light .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header.is-active.mod-active .workspace-tab-header-inner-close-button,
+.theme-light .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header.is-active.mod-active .workspace-tab-header-inner-icon svg,
+.theme-light .workspace-tabs:not(.mod-stacked) .workspace-tab-header.is-active.mod-active .workspace-tab-header-inner-title {
+    color: var(--vhs-pink);
+}
+
+/* Stacked tabs - colored border and text */
+.theme-light .mod-root .workspace-tabs.mod-stacked .workspace-tab-header.is-active.mod-active {
+    color: var(--vhs-pink);
+    border-left: 2px solid var(--vhs-pink);
+}
+
+.theme-light .mod-root .workspace-tabs.mod-stacked .workspace-tab-header.is-active.mod-active .workspace-tab-header-inner-close-button,
+.theme-light .mod-root .workspace-tabs.mod-stacked .workspace-tab-header.is-active.mod-active .workspace-tab-header-inner-icon svg,
+.theme-light .workspace-tabs.mod-stacked .workspace-tab-header.is-active.mod-active .workspace-tab-header-inner-title {
+    color: var(--vhs-pink);
 }
 
 /* ============================================ */

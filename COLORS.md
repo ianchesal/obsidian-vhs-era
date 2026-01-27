@@ -10,7 +10,8 @@ This document contains all colors extracted from the VHS Era Neovim theme for re
 | Float Background | `#131313` | Secondary/floating backgrounds |
 | Foreground | `#f2f4f8` | Primary text color |
 | Cursor | `#ffffff` | Cursor/white accents |
-| Selection | `#353535` | Selected text background |
+| Selection | `#525252` | Selected text background |
+| Active Line | `#242424` | Current line highlight |
 | Search | `#484848` | Search highlight background |
 | Comment | `#525252` | Muted/secondary text |
 

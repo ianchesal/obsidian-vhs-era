@@ -13,7 +13,8 @@ This is an Obsidian theme that adapts the VHS Era color scheme (originally from 
 - Float Background: `#131313`
 - Foreground: `#f2f4f8`
 - Cursor: `#ffffff`
-- Selection: `#353535`
+- Selection: `#525252`
+- Active Line: `#242424`
 - Search: `#484848`
 - Comment: `#525252`
 
@@ -39,6 +40,7 @@ This is an Obsidian theme that adapts the VHS Era color scheme (originally from 
 - Foreground: `#1a1a1a` (nearly black)
 - Muted Text: `#5a5a5a` (medium gray)
 - Selection: `#d0cdc0` (warm gray)
+- Active Line: `#e0ddd0` (subtle highlight)
 - Search: `#c8c5b8` (warm highlight)
 
 **Accent Colors (darkened for light backgrounds):**
@@ -93,7 +95,8 @@ This is an Obsidian theme that adapts the VHS Era color scheme (originally from 
 
 **UI Element Assignments:**
 - Links: Primary Blue (`#78a9ff`)
-- Selection: `#353535`
+- Selection: `#525252` (dark mode), `#d0cdc0` (light mode)
+- Active Line: `#242424` (dark mode), `#e0ddd0` (light mode)
 - Search highlights: `#484848`
 - Active tabs: Cyan text (`#3ddbd9`) with 2px cyan border
 - Sidebar active items: Cyan with border on hover

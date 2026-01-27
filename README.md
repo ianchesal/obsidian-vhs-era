@@ -2,7 +2,7 @@
 
 A retro, high-contrast theme for Obsidian that brings the nostalgic VHS aesthetic to your note-taking experience. Available in both dark and light modes, this theme combines the vibrant color palette of the VHS Era Neovim theme with the thoughtful structure of LYT-Mode, creating a unique visual experience that's both functional and stylish.
 
-![Version](https://img.shields.io/badge/version-0.2.0-blue)
+![Version](https://img.shields.io/badge/version-0.2.1-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
 ![VHS Era Theme Showcase](showcase-large.png)
@@ -25,7 +25,8 @@ A retro, high-contrast theme for Obsidian that brings the nostalgic VHS aestheti
 **Base Colors:**
 - **Background**: `#161616` - Deep black with subtle warmth
 - **Text**: `#f2f4f8` - Crisp white for maximum readability
-- **Selection**: `#353535` - Subtle gray for selected text
+- **Selection**: `#525252` - Medium gray for selected text
+- **Active Line**: `#242424` - Subtle highlight for current line
 - **Muted Text**: `#525252` - For secondary information
 
 **Accent Colors:**
@@ -41,7 +42,8 @@ A retro, high-contrast theme for Obsidian that brings the nostalgic VHS aestheti
 **Base Colors:**
 - **Background**: `#e8e5d8` - Darker warm cream for better text contrast and retro aesthetic
 - **Text**: `#1a1a1a` - Nearly black for excellent readability
-- **Selection**: `#d0cdc0` - Warm gray
+- **Selection**: `#d0cdc0` - Warm gray for selected text
+- **Active Line**: `#e0ddd0` - Subtle highlight for current line
 - **Muted Text**: `#5a5a5a` - Medium gray for secondary information
 
 **Accent Colors (darkened for visibility):**
